@@ -38,19 +38,18 @@ class Board:
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN]]
 
     def is_game_over(self):
-        return self.evaluate_board() != -1
+        return self.evaluate() != -1
 
     # Check for empty places on board
     def possibilities(self):
-        l = []
+        empty_positions = []
 
         for i in range(len(self.board)):
             for j in range(len(self.board)):
-
                 if self.is_empty_position(i, j):
-                    l.append((i, j))
+                    empty_positions.append((i, j))
 
-        return(l)
+        return(empty_positions)
 
     # Select a random place for the player
     def random_place(self, player):
@@ -60,7 +59,7 @@ class Board:
         return(self.board)
 
     # Evaluates whether there is a winner or a tie
-    def evaluate_board(self):
+    def evaluate(self):
         winner = 0
 
         for player in (self.PLAYER_TOKEN, self.BOT_TOKEN):
@@ -145,7 +144,7 @@ def play_game():
             print(board)
             sleep(2)
             move_count += 1
-            winner = board.evaluate_board()
+            winner = board.evaluate()
             if winner != 0:
                 break
 
