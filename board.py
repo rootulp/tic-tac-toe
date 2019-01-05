@@ -5,7 +5,7 @@ class Board:
         self.board = self.initial_board()
 
     def player_move(self, row, col):
-        pass
+        self.make_move('X', row, col)
 
 
     def make_move(self, token, row, col):
