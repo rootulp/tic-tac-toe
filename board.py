@@ -1,4 +1,6 @@
 import numpy as np
+import random
+from time import sleep
 
 class Board:
 
@@ -35,6 +37,28 @@ class Board:
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN],
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN]]
 
+    def is_game_over(self):
+        return self.evaluate_board() != -1
+
+    # Check for empty places on board
+    def possibilities(self):
+        l = []
+
+        for i in range(len(self.board)):
+            for j in range(len(self.board)):
+
+                if self.is_empty_position(i, j):
+                    l.append((i, j))
+
+        return(l)
+
+    # Select a random place for the player
+    def random_place(self, player):
+        selection = self.possibilities()
+        row, col = random.choice(selection)
+        self.board[row][col] = player
+        return(self.board)
+
     # Evaluates whether there is a winner or a tie
     def evaluate_board(self):
         winner = 0
@@ -46,9 +70,18 @@ class Board:
 
                 winner = player
 
-        if np.all(self.board != self.EMPTY_TOKEN) and winner == 0:
+        if self.is_board_full() and winner == 0:
             winner = -1
+
         return winner
+
+    def is_board_full(self):
+        for row_i, row in enumerate(self.board):
+            for col_i, _token in enumerate(row):
+                if self.is_empty_position(row_i, col_i):
+                    return False
+        return True
+
 
     # Checks whether the player has three of their marks in a horizontal row
     def row_win(self, player):
@@ -98,21 +131,26 @@ class Board:
 
         return '\n'.join(output)
 
+# Main function to start the game
+def play_game():
+    board = Board()
+    winner = 0
+    move_count = 0
 
-def main():
-    b = Board()
+    print(board)
+    while winner == 0:
+        for player in [board.PLAYER_TOKEN, board.BOT_TOKEN]:
+            board.random_place(player)
+            print("Board after " + str(move_count) + " move")
+            print(board)
+            sleep(2)
+            move_count += 1
+            winner = board.evaluate_board()
+            if winner != 0:
+                break
 
-    while not b.is_game_over():
-        print(b, end='\n====================================\n')
-        row_i, col_i = list(map(int, input('Player move: ').strip().split(' ')))
-        b.player_move(row_i, col_i)
-
-        if b.is_game_over():
-            print('Player wins!')
-            break
-        else:
-            b.bot_make_move()
+    return(winner)
 
 
 if __name__ == '__main__':
-    main()
+    print("Winner is: " + str(play_game()))
