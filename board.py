@@ -6,7 +6,7 @@ class Board:
 
 
     def make_move(self, token, row, col):
-        pass
+        self.board[row][col] = token
 
 
     def initial_board(self):
