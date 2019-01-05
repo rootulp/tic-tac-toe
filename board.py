@@ -77,7 +77,17 @@ class Board:
 
 def main():
     b = Board()
-    print(b)
 
-if __name__ == "__main__":
+    while not b.is_game_over():
+        print(b, end='\n====================================\n')
+        row_i, col_i = list(map(int, input('Player move: ').strip().split(' ')))
+        b.player_move(row_i, col_i)
+
+        if b.is_game_over():
+            print('Player wins!')
+            break
+        else:
+            b.bot_make_move()
+
+if __name__ == '__main__':
     main()
