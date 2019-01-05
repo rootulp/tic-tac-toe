@@ -12,6 +12,20 @@ class Board:
     def make_move(self, token, row, col):
         self.board[row][col] = token
 
-
     def initial_board(self):
         return [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
+
+    def __str__(self):
+        output = ['Board:']
+
+        for row in self.board:
+            output.append(''.join(row))
+
+        return '\n'.join(output)
+
+def main():
+    b = Board()
+    print(b)
+
+if __name__ == "__main__":
+    main()
