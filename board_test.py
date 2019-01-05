@@ -9,3 +9,10 @@ class BoardTests(unittest.TestCase):
         expected = [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
         self.assertEqual(b.board, expected)
 
+    def test_make_move(self):
+        b = Board()
+        b.make_move('X', 0, 0)
+
+        expected = [['X', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
+        self.assertEqual(b.board, expected)
+
