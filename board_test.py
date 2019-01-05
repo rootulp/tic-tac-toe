@@ -3,23 +3,24 @@ from board import Board
 
 class BoardTests(unittest.TestCase):
 
-    def test_initial_board(self):
-        b = Board()
 
+    def setUp(self):
+        self.b = Board()
+        return super().setUp()
+
+    def test_initial_board(self):
         expected = [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
-        self.assertEqual(b.board, expected)
+        self.assertEqual(self.b.board, expected)
 
     def test_player_move(self):
-        b = Board()
-        b.player_move(0, 0)
+        self.b.player_move(0, 0)
 
         expected = [['X', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
-        self.assertEqual(b.board, expected)
+        self.assertEqual(self.b.board, expected)
 
     def test_make_move(self):
-        b = Board()
-        b.make_move('X', 0, 0)
+        self.b.make_move('X', 0, 0)
 
         expected = [['X', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
-        self.assertEqual(b.board, expected)
+        self.assertEqual(self.b.board, expected)
 
