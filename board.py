@@ -123,7 +123,7 @@ class Board:
         return self.board[row_i][col_i] == self.EMPTY_TOKEN
 
     def __str__(self):
-        output = ['Board:']
+        output = []
 
         for row in self.board:
             output.append(''.join(row))
@@ -140,7 +140,7 @@ def play_game():
     while winner == 0:
         for player in [board.PLAYER_TOKEN, board.BOT_TOKEN]:
             board.random_place(player)
-            print("Board after " + str(move_count) + " move")
+            print("Board after move " + str(move_count))
             print(board)
             sleep(2)
             move_count += 1
