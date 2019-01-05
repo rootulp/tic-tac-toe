@@ -112,12 +112,10 @@ class Board:
 
     # Checks whether the player has three of their marks in a diagonal row
     def diag_win(self, player):
-        win = True
-
-        for x in range(len(self.board)):
-            if self.board[x][x] != player:
-                win = False
-        return(win)
+        # There are only two diagonals in the board
+        diag_1 = player == self.board[0][0] == self.board[1][1] == self.board[2][2]
+        diag_2 = player == self.board[2][0] == self.board[1][1] == self.board[0][2]
+        return diag_1 or diag_2
 
     def is_empty_position(self, row_i, col_i):
         return self.board[row_i][col_i] == self.EMPTY_TOKEN
