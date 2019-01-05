@@ -1,8 +1,8 @@
 import unittest
 from board import Board
 
-class BoardTests(unittest.TestCase):
 
+class BoardTests(unittest.TestCase):
 
     def setUp(self):
         self.b = Board()

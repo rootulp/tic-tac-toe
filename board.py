@@ -75,6 +75,7 @@ class Board:
 
         return '\n'.join(output)
 
+
 def main():
     b = Board()
 
@@ -88,6 +89,7 @@ def main():
             break
         else:
             b.bot_make_move()
+
 
 if __name__ == '__main__':
     main()
