@@ -22,7 +22,7 @@ class Board:
 
     def next_empty_position(self):
         for row_i, row in enumerate(self.board):
-            for col_i, token in enumerate(row):
+            for col_i, _token in enumerate(row):
                 if self.is_empty_position(row_i, col_i):
                     return row_i, col_i
 
@@ -34,7 +34,8 @@ class Board:
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN]]
 
     def score(self):
-        pass
+        if not self.is_game_over():
+            return 0
 
     def is_game_over(self):
         return self.any_three_in_row() or self.any_three_in_col() or self.any_three_in_diag()

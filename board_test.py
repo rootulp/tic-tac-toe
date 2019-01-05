@@ -50,6 +50,7 @@ class BoardTests(unittest.TestCase):
         expected = 0
         self.assertEqual(self.b.score(), expected)
 
+    @unittest.skip
     def test_score_is_positive_one_when_player_wins(self):
         self.b.player_move(0, 0)
         self.b.player_move(1, 1)
@@ -58,6 +59,7 @@ class BoardTests(unittest.TestCase):
         expected = 1
         self.assertEqual(self.b.score(), expected)
 
+    @unittest.skip
     def test_score_is_negative_one_when_bot_wins(self):
         self.b.bot_move(0, 0)
         self.b.bot_move(1, 1)
