@@ -30,7 +30,9 @@ class Board:
 
 
     def initial_board(self):
-        return [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
+        return [[self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN],
+                [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN],
+                [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN]]
 
     def __str__(self):
         output = ['Board:']
