@@ -11,7 +11,7 @@ class Board:
         self.make_move(self.PLAYER_TOKEN, row, col)
 
     def bot_make_move(self):
-        row, col = self.next_open_position()
+        row, col = self.next_empty_position()
         self.bot_move(row, col)
 
     def bot_move(self, row, col):
@@ -20,13 +20,13 @@ class Board:
     def make_move(self, token, row, col):
         self.board[row][col] = token
 
-    def next_open_position(self):
+    def next_empty_position(self):
         for row_i, row in enumerate(self.board):
             for col_i, token in enumerate(row):
                 if token == self.EMPTY_TOKEN:
                     return row_i, col_i
 
-        raise 'No open positions'
+        raise 'No empty positions'
 
 
     def initial_board(self):
