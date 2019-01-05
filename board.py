@@ -28,11 +28,13 @@ class Board:
 
         raise 'No empty positions'
 
-
     def initial_board(self):
         return [[self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN],
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN],
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN]]
+
+    def is_game_over(self):
+        pass
 
     def __str__(self):
         output = ['Board:']

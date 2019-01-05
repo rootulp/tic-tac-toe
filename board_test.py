@@ -35,3 +35,13 @@ class BoardTests(unittest.TestCase):
 
         expected = [['O', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
         self.assertEqual(self.b.board, expected)
+
+    def test_when_game_is_not_over(self):
+        self.assertFalse(self.b.is_game_over())
+
+    def test_when_game_is_over(self):
+        self.b.player_move(0, 0)
+        self.b.player_move(1, 1)
+        self.b.player_move(2, 2)
+
+        self.assertTrue(self.b.is_game_over())
