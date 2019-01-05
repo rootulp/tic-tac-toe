@@ -18,6 +18,12 @@ class BoardTests(unittest.TestCase):
         expected = [['X', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
         self.assertEqual(self.b.board, expected)
 
+    def test_bot_move(self):
+        self.b.bot_move(1, 1)
+
+        expected = [['.', '.', '.'], ['.', 'O', '.'], ['.', '.', '.']]
+        self.assertEqual(self.b.board, expected)
+
     def test_make_move(self):
         self.b.make_move('X', 0, 0)
 
