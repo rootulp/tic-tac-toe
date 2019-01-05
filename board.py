@@ -1,2 +1,5 @@
 class Board:
-    pass
+
+
+    def __init__(self):
+        self.board = [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
