@@ -45,3 +45,23 @@ class BoardTests(unittest.TestCase):
         self.b.player_move(2, 2)
 
         self.assertTrue(self.b.is_game_over())
+
+    def test_score_is_zero_when_game_is_not_over(self):
+        expected = 0
+        self.assertEqual(self.b.score(), expected)
+
+    def test_score_is_positive_one_when_player_wins(self):
+        self.b.player_move(0, 0)
+        self.b.player_move(1, 1)
+        self.b.player_move(2, 2)
+
+        expected = 1
+        self.assertEqual(self.b.score(), expected)
+
+    def test_score_is_negative_one_when_bot_wins(self):
+        self.b.bot_move(0, 0)
+        self.b.bot_move(1, 1)
+        self.b.bot_move(2, 2)
+
+        expected = -1
+        self.assertEqual(self.b.score(), expected)

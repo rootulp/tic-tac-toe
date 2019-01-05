@@ -33,6 +33,9 @@ class Board:
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN],
                 [self.EMPTY_TOKEN, self.EMPTY_TOKEN, self.EMPTY_TOKEN]]
 
+    def score(self):
+        pass
+
     def is_game_over(self):
         return self.any_three_in_row() or self.any_three_in_col() or self.any_three_in_diag()
 
